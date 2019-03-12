@@ -1,6 +1,6 @@
 # AI_Connect_Four
 
-Connect four with 3 AI playing agents(using different Algorithms), and a random playing agent implemented:
+Connect four implementation with 3 AI playing agents(using different Algorithms), and a random playing agent:
 
   1.Agent_Playing_Random
   
