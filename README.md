@@ -10,4 +10,26 @@ Connect four implementation with 3 AI playing agents(using different Algorithms)
   
   4.Agent_Using_H_Minimax
   
-Player gets to pick his opponent
+  
+# Preview
+Connect-Four by Benson Gathee
+
+Choose your game:
+  1. Tiny 3x3x3 Connect-Three
+  2. Wider 3x5x3 Connect-Three
+  3. Standard 6x7x4 Connect-Four
+Your Choice? 2
+
+Choose your opponent:
+  1. An agent that plays randomly
+  2. An agent that uses MINIMAX
+  3. An agent that uses MINIMAX with alpha-beta pruning
+  4. An agent that uses H-MINIMAX with a fixed depth cutoff
+  
+Your Choice? 3
+
+You are Player (Yellow)
+
+Your Opponent is Player (Red)
+
+Do you want Player RED (1) or YELLOW (2) to go first? 
