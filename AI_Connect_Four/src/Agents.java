@@ -43,7 +43,7 @@ public class Agents implements Agents_Interface{
 		else
 			bestMoveUtility = Brain(node);
 		
-		NumberFormat formatter = new DecimalFormat("#0.00000");
+		NumberFormat formatter = new DecimalFormat("#0.000000");
 		long end = System.currentTimeMillis();
 		if(agent != 5)
 			RedTotalTime += (end - start) / 1000d;
