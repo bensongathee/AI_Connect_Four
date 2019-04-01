@@ -55,59 +55,35 @@ public class Game
 		Node node = new Node(Problem.InitialState());
 		Game.PrintTransitionModel(Problem.InitialState());
 		
-		Agent_Playing_Random RandomAgent= null;
-		Agent_Using_Minimax MinimaxAgent= null;
-		Agent_Using_Minimax_withAlpha_Beta_Pruning MinimaxAgentABPrune= null;
-		Agent_Using_H_Minimax_withDepthCutoff HMinimax= null;
+		Agents agent = new Agents();
 		
-		switch (Opponent) 
-		{
-		case 1:
-			RandomAgent= new Agent_Playing_Random();
-			break;
-		case 2:
-			MinimaxAgent= new Agent_Using_Minimax();
-			break;
-		case 3:
-			MinimaxAgentABPrune= new Agent_Using_Minimax_withAlpha_Beta_Pruning();
-		case 4:
-			HMinimax= new Agent_Using_H_Minimax_withDepthCutoff(); 
-		}
-		
-		Agent_Using_Brain BrainAgent = new Agent_Using_Brain();
-		while((Problem.TerminalState(node.GetState()) != true)) 
-		{
-			if(Player%2 == 0)
-			{
+		while((Problem.TerminalState(node.GetState()) != true)){
+			if(Player%2 == 0){
 				System.out.print("Next to move: YELLOW\n\nYour move [column 0-"+(Problem.InitialState()[0].length-1)+"]? ");
-				node = BrainAgent.PlayGame(node, Player);
+				node = agent.PlayGame(node, true, 5, 0);
 				Player=1;
 			}
-			else
-			{
+			else{
 				System.out.print("Next to move: RED\n\n");
-				switch(Opponent)
-				{
+				switch(Opponent){
 				case 1:
-					node = RandomAgent.PlayGame(node);
+					node = agent.PlayGame(node, false, 1, 0);
 					break;
 				case 2:
-					node = MinimaxAgent.PlayGame(node, false);
+					node = agent.PlayGame(node, false, 2 , 0);
 					break;
 				case 3:
-					node = MinimaxAgentABPrune.PlayGame(node, false);
+					node = agent.PlayGame(node, false, 3 , 0);
 					break;
 				case 4:
-					node= HMinimax.PlayGame(node, false, HDepth);
+					node= agent.PlayGame(node, false, 4, HDepth);
 				}
 				Player = 2;
 			}
 			PrintTransitionModel(node.GetState());
-
 		}
 		
-		if(Problem.Draw(node.GetState()) != true) 
-		{
+		if(Problem.Draw(node.GetState()) != true) {
 			if(Player == 1)
 				System.out.println("\nWinner: YELLOW");
 			else
@@ -117,58 +93,33 @@ public class Game
 			System.out.println("\nNo Winner: Draw");
 		
 		NumberFormat formatter = new DecimalFormat("#0.00000");
-		switch(Opponent) {
-			case 1:
-				System.out.println("Total time:\r\n" + 
-						"	RED: "+ formatter.format(RandomAgent.GetRedTotalTime()) +" secs\r\n" + 
-						"	YELLOW: "+formatter.format(BrainAgent.GetYellowTotalTime())+" secs");
-				break;
-			case 2:
-				System.out.println("Total time:\r\n" + 
-						"	RED: "+ formatter.format(MinimaxAgent.GetRedTotalTime()) +" secs\r\n" + 
-						"	YELLOW: "+formatter.format(BrainAgent.GetYellowTotalTime())+" secs");
-				break;
-			case 3:
-				System.out.println("Total time:\r\n" + 
-						"	RED: "+ formatter.format(MinimaxAgentABPrune.GetRedTotalTime()) +" secs\r\n" + 
-						"	YELLOW: "+formatter.format(BrainAgent.GetYellowTotalTime())+" secs");
-				break;
-			case 4:
-			System.out.println("Total time:\r\n" + 
-					"	RED: "+ formatter.format(HMinimax.GetRedTotalTime()) +" secs\r\n" + 
-					"	YELLOW: "+formatter.format(BrainAgent.GetYellowTotalTime())+" secs");
-		}
+		System.out.println("Total time:\r\n" + 
+				"	RED: "+ formatter.format(agent.getRedTotalTime()) +" secs\r\n" + 
+				"	YELLOW: "+formatter.format(agent.getYellowTotalTime())+" secs");
 		userInput.close();
 	}
-	public static void PrintTransitionModel(int[][] State) 
-	{
+	
+	public static void PrintTransitionModel(int[][] State) {
 		System.out.print("     ");
 		for(int i = 0; i < State[0].length; i++)
 			System.out.print("    "+i);
-		
 		System.out.println();
-		for (int i = 0; i < State.length; i++) 
-		{
+		for (int i = 0; i < State.length; i++) {
 			System.out.print("\n    "+i);
-			for(int j = 0 ; j < State[i].length; j++) 
-			{
+			for(int j = 0 ; j < State[i].length; j++) {
 				if(State[i][j]==0)
 					System.out.print("     ");
 				else if(State[i][j]==1)
 					System.out.print("    X");
 				else
 					System.out.print("    O");
-				
 			}
 			System.out.print("    "+i+"\n");
-			
 		}
 		System.out.println();
-		
 		System.out.print("     ");
 		for(int i = 0; i < State[0].length; i++)
 			System.out.print("    "+i);
-		
 		System.out.println();
 	}
 }
