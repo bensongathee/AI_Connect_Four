@@ -258,5 +258,3 @@ class Check
 		return false;
 	}
 }
-
-

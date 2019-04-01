@@ -7,7 +7,6 @@ public class Node
 	private int[][] State;
 	private Expand expand = new Expand();
 	private int BestMove;
-	private int maxdepth;
 	
 	public Node(int[][] State)
 	{
@@ -40,14 +39,6 @@ public class Node
 	public List<Node> Expand(boolean Player)
 	{
 		return expand.MakeChildren(State, Player);
-	}
-	public void SetDepth(int depth)
-	{
-		this.maxdepth= depth;
-	}
-	public int GetDepth()
-	{
-		return maxdepth;
 	}
 }
 
