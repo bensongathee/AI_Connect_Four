@@ -32,4 +32,4 @@ You are Player (Yellow)
 
 Your Opponent is Player (Red)
 
-Choose who goes first: RED (1) or YELLOW (2)? 
+Choose who goes first: RED (1) or YELLOW (2)? ...
