@@ -2,13 +2,13 @@
 
 Connect four implementation with 3 AI playing agents(using different Algorithms), and a random playing agent:
 
-  1.Agent_Playing_Random
+Algorithms used 
+
+    1.Minimax
   
-  2.Agent_Using_Minimax
+    2.Minimax (with Alpha-Beta Pruning)
   
-  3.Agent_Using_Minimax (with Alpha-Beta Pruning)
-  
-  4.Agent_Using_H_Minimax
+    3.H_Minimax (with a cut-off depth)
   
   
 # Preview
@@ -32,4 +32,4 @@ You are Player (Yellow)
 
 Your Opponent is Player (Red)
 
-Choose who goes first: RED (1) or YELLOW (2)? 
+Choose who goes first: RED (1) or YELLOW (2)? ...
