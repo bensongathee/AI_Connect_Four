@@ -22,7 +22,7 @@ public class Agents implements Agents_Interface{
 	
 	@Override
 	public Node PlayGame(Node node, boolean player, int agent, int HDepth) {
-		long start = System.currentTimeMillis();
+		
 		Node randomBestMove = null;
 		
 		if(agent != 1 && agent != 5)
@@ -30,6 +30,7 @@ public class Agents implements Agents_Interface{
 		else if(agent != 5)
 			System.out.println("I'm guessing...");
 		
+		long start = System.currentTimeMillis();
 		double bestMoveUtility = 0;
 		
 		if(agent == 1)
@@ -48,7 +49,7 @@ public class Agents implements Agents_Interface{
 		if(agent != 5)
 			RedTotalTime += (end - start) / 1000d;
 		else
-			YellowTotalTime+=(end - start) /1000d;
+			YellowTotalTime += (end - start) /1000d;
 			
 		if(agent == 1) {
 			randomBestMove = frontiers.get((int) bestMoveUtility);
